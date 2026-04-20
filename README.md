@@ -1,26 +1,57 @@
-# Data Engineering Pipeline (PySpark)
+# Azure Data Engineering Pipeline (PySpark)
 
-This project demonstrates a simple end-to-end data pipeline built using PySpark.
+This project demonstrates an end-to-end data engineering pipeline using PySpark, Azure, and Terraform.
 
 ## Features
 
-- Data ingestion from CSV
-- Data transformation using PySpark
-- Aggregation of sales data
-- Output of analytics-ready dataset
+- Data ingestion from CSV  
+- Data transformation using PySpark  
+- Aggregation of sales data  
+- Output of analytics-ready dataset  
+- Upload of processed data to Azure Blob Storage  
+- Infrastructure deployed using Terraform (Infrastructure as Code)  
+- Secure credential handling using environment variables  
 
 ## Tech Stack
 
-- Python
-- PySpark
-- Pandas
+- Python  
+- PySpark  
+- Azure Blob Storage  
+- Terraform  
+- Git  
 
-## Example Output
+## Pipeline Flow
 
-Aggregated product sales:
-- Total quantity per product
-- Total revenue per product
+1. Raw data is loaded from CSV  
+2. Data is transformed using PySpark  
+3. Output is saved locally  
+4. Processed data is uploaded to Azure Blob Storage  
+
+## Cloud Setup
+
+- Azure Resource Group  
+- Azure Storage Account  
+- Deployed using Terraform  
+
+## Security
+
+- Sensitive credentials are handled using environment variables  
+- No secrets are stored in the codebase  
 
 ## Purpose
 
-This project simulates a basic data engineering workflow, similar to pipelines built in cloud platforms such as Azure (e.g., MS Fabric, Data Lake, and Spark processing).
+This project simulates a real-world data engineering workflow similar to pipelines built in Azure-based data platforms (e.g., MS Fabric, Data Lake, Spark processing).
+
+## Project Structure
+
+```bash
+data-pipeline/
+│
+├── data/
+├── output/
+├── pipeline.py
+├── run_pipeline.py
+├── upload_to_azure.py
+├── infra/
+│   └── main.tf
+├── README.md
