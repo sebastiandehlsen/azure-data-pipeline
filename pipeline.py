@@ -1,31 +1,27 @@
 from pyspark.sql import SparkSession
-from pyspark.sql.functions import col, sum as _sum
+from pyspark.sql.functions import col
 import os
 
-spark = SparkSession.builder.appName("Sales Data Pipeline").getOrCreate()
 
-# Load data
-df = spark.read.csv("data/sales.csv", header=True, inferSchema=True)
+def run_transformation():
+    spark = SparkSession.builder.appName("Sales Data Pipeline").getOrCreate()
 
-print("Original data:")
-df.show()
+    # Load data
+    df = spark.read.csv("data/sales.csv", header=True, inferSchema=True)
 
-# Transformation 1: total per row
-df = df.withColumn("total", col("price") * col("quantity"))
+    print("Original data:")
+    df.show()
 
-# Transformation 2: aggregate per product
-df_agg = df.groupBy("product").agg(
-    _sum("quantity").alias("total_quantity"),
-    _sum("total").alias("total_revenue")
-)
+    # Transformation: total per row
+    df = df.withColumn("total", col("price") * col("quantity"))
 
-print("Aggregated data:")
-df_agg.show()
+    print("Transformed data:")
+    df.show()
 
-# Save output
-os.makedirs("output", exist_ok=True)
-df_agg.toPandas().to_csv("output/product_sales_summary.csv", index=False)
+    # Save transformed data (IKKE aggregated længere)
+    os.makedirs("output", exist_ok=True)
+    df.toPandas().to_csv("output/transformed_sales.csv", index=False)
 
-print("Saved aggregated file to output/product_sales_summary.csv")
+    print("Saved transformed file")
 
-spark.stop()
+    spark.stop()

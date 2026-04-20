@@ -55,3 +55,11 @@ data-pipeline/
 ├── infra/
 │   └── main.tf
 ├── README.md
+
+## Pipeline Orchestration
+
+The pipeline is orchestrated through a central script that coordinates:
+
+- Data transformation using PySpark
+- SQL-based aggregation layer
+- Upload of processed data to Azure Blob Storage
