@@ -51,10 +51,12 @@ data-pipeline/
 ├── output/
 ├── pipeline.py
 ├── run_pipeline.py
+├── sql_step.py
 ├── upload_to_azure.py
 ├── infra/
 │   └── main.tf
 ├── README.md
+```
 
 ## Pipeline Orchestration
 
