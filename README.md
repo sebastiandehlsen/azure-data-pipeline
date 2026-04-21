@@ -2,6 +2,16 @@
 
 This project demonstrates an end-to-end data engineering pipeline using PySpark, Azure, and Terraform.
 
+## Overview
+
+This project simulates a production-style data pipeline with:
+
+- Task-based orchestration
+- Retry logic
+- Structured logging
+- Timestamp-based data versioning
+- Azure cloud integration
+
 ## Features
 
 - Data ingestion from CSV  
@@ -50,9 +60,13 @@ data-pipeline/
 ├── data/
 ├── output/
 ├── pipeline.py
-├── run_pipeline.py
 ├── sql_step.py
 ├── upload_to_azure.py
+├── run_pipeline.py
+├── tasks.py
+├── scheduler.py
+├── logger.py
+├── config.json
 ├── infra/
 │   └── main.tf
 ├── README.md
@@ -60,8 +74,9 @@ data-pipeline/
 
 ## Pipeline Orchestration
 
-The pipeline is orchestrated through a central script that coordinates:
+The pipeline is structured using a task-based orchestration pattern:
 
-- Data transformation using PySpark
-- SQL-based aggregation layer
-- Upload of processed data to Azure Blob Storage
+- `tasks.py` defines reusable pipeline tasks with retry logic
+- `run_pipeline.py` orchestrates execution of tasks
+- `scheduler.py` enables automated recurring pipeline runs
+- Each pipeline run is versioned using timestamp-based folders
