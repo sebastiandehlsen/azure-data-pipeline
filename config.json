@@ -1,0 +1,7 @@
+{
+  "input_path": "data/sales.csv",
+  "transformed_path": "output/transformed_sales.csv",
+  "aggregated_path": "output/product_sales_summary.csv",
+  "container_name": "data",
+  "max_retries": 2
+}
