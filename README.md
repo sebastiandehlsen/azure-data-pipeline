@@ -41,7 +41,21 @@ This project simulates a production-style data pipeline with:
 
 - Azure Resource Group  
 - Azure Storage Account  
-- Deployed using Terraform  
+
+## Infrastructure (Terraform)
+
+Infrastructure is provisioned using Terraform:
+
+- Azure Resource Group
+- Azure Storage Account
+
+To deploy:
+
+```bash
+cd infra
+terraform init
+terraform apply
+```
 
 ## Security
 
